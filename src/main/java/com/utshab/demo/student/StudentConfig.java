@@ -16,20 +16,17 @@ public class StudentConfig {
             Student roy = new Student(
                     "Roy",
                     "roy@mail.com",
-                    LocalDate.of(2020, 11, 30),
-                    21
+                    LocalDate.of(2017, 11, 30)
             );
             Student ashik = new Student(
                     "Ashik",
                     "ashik@mail.com",
-                    LocalDate.of(2021, 12, 12),
-                    20
+                    LocalDate.of(2000, 12, 12)
             );
 
             repository.saveAll(
                     List.of(roy, ashik)
             );
-
         };
     }
 }
