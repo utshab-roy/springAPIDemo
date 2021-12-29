@@ -22,4 +22,16 @@ public class DepartmentServiceImpl implements DepartmentService{
     public List<Department> fetchDepartmentList() {
         return departmentRepository.findAll();
     }
+
+    @Override
+    public Department fetchDepartmentById(Long departmentId) {
+        // tdepartmentRepository.findById(departmentId) will return optional
+        // so get() is important
+        return departmentRepository.findById(departmentId).get();
+    }
+
+    @Override
+    public void deleteDepartmentById(Long departmentId) {
+        departmentRepository.deleteById(departmentId);
+    }
 }
