@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 public class DepartmentController {
@@ -44,6 +46,11 @@ public class DepartmentController {
     public Department updateDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department) {
         
         return departmentService.updateDepartment(departmentId, department);
+    }
+
+    @GetMapping(value="/departments/name/{name}")
+    public List<Department> fetchDepartmentByName(@PathVariable("name") String departmentName) {
+        return departmentService.fetchDepartmentByName(departmentName);
     }
 
 }
