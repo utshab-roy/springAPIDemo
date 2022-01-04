@@ -1,6 +1,7 @@
 package com.utshab.demo.controller;
 
 import com.utshab.demo.entity.Department;
+import com.utshab.demo.error.DepartmentNotFoundException;
 import com.utshab.demo.service.DepartmentService;
 
 import org.slf4j.Logger;
@@ -38,7 +39,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) {
+    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(departmentId);
     }
 

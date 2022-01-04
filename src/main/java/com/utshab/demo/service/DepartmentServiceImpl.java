@@ -1,12 +1,14 @@
 package com.utshab.demo.service;
 
 import com.utshab.demo.entity.Department;
+import com.utshab.demo.error.DepartmentNotFoundException;
 import com.utshab.demo.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -25,10 +27,16 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department fetchDepartmentById(Long departmentId) {
-        // tdepartmentRepository.findById(departmentId) will return optional
+    public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+        // departmentRepository.findById(departmentId) will return optional
         // so get() is important
-        return departmentRepository.findById(departmentId).get();
+        Optional<Department> department = departmentRepository.findById(departmentId);
+
+        if (!department.isPresent()){
+            throw new DepartmentNotFoundException("Department does not exists");
+        }
+
+        return department.get();
     }
 
     @Override
