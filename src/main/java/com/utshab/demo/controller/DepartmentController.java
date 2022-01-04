@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import javax.validation.Valid;
 
 @RestController
 public class DepartmentController {
@@ -22,12 +21,12 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @PostMapping("/departments")
-    public Department saveDepartment(@RequestBody Department department){
-        return  departmentService.saveDepartment(department);
+    public Department saveDepartment(@Valid @RequestBody Department department) {
+        return departmentService.saveDepartment(department);
     }
 
     @GetMapping("/departments")
-    public List<Department> fetchDepartmentList(){
+    public List<Department> fetchDepartmentList() {
         return departmentService.fetchDepartmentList();
     }
 
@@ -44,11 +43,11 @@ public class DepartmentController {
 
     @PutMapping("/departments/{id}")
     public Department updateDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department) {
-        
+
         return departmentService.updateDepartment(departmentId, department);
     }
 
-    @GetMapping(value="/departments/name/{name}")
+    @GetMapping(value = "/departments/name/{name}")
     public List<Department> fetchDepartmentByName(@PathVariable("name") String departmentName) {
         return departmentService.fetchDepartmentByName(departmentName);
     }
