@@ -16,7 +16,7 @@ class DepartmentRepositoryTest {
     private DepartmentRepository departmentRepository;
 
     @Autowired
-    private TestEntityManager testEntityManager;
+    private TestEntityManager entityManager;
 
     @BeforeEach
     void setUp() {
@@ -27,7 +27,7 @@ class DepartmentRepositoryTest {
                         .departmentAddress("Delhi")
                         .build();
 
-        testEntityManager.persist(department);
+        entityManager.persist(department);
     }
 
     @Test

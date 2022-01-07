@@ -1,6 +1,6 @@
 package com.utshab.demo.error;
 
-public class DepartmentNotFoundException extends Exception{
+public class DepartmentNotFoundException extends Exception {
 
     public DepartmentNotFoundException() {
         super();

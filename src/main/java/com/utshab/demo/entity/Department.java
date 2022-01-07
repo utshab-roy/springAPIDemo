@@ -22,7 +22,7 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long departmentId;
     @NotBlank(message = "Department name cannot be empty !")
-    private String  departmentName;
+    private String departmentName;
     private String departmentAddress;
     private String departmentCode;
 }

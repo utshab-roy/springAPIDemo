@@ -6,7 +6,6 @@ import com.utshab.demo.error.DepartmentNotFoundException;
 import java.util.List;
 
 public interface DepartmentService {
-
     public Department saveDepartment(Department department);
 
     public List<Department> fetchDepartmentList();
@@ -17,5 +16,6 @@ public interface DepartmentService {
 
     public Department updateDepartment(Long departmentId, Department department);
 
-    public List<Department> fetchDepartmentByName(String departmentName);
+    Department fetchDepartmentByName(String departmentName);
 }
+

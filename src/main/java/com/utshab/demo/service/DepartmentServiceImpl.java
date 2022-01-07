@@ -28,11 +28,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
-        // departmentRepository.findById(departmentId) will return optional
-        // so get() is important
         Optional<Department> department = departmentRepository.findById(departmentId);
 
-        if (!department.isPresent()){
+        if (!department.isPresent()) {
             throw new DepartmentNotFoundException("Department does not exists");
         }
 
@@ -46,28 +44,28 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department updateDepartment(Long departmentId, Department department) {
-        Department prevDepartment = departmentRepository.findById(departmentId).get();
+        Department depDB = departmentRepository.findById(departmentId).get();
 
         if (Objects.nonNull(department.getDepartmentName()) &&
                 !"".equalsIgnoreCase(department.getDepartmentName())) {
-            prevDepartment.setDepartmentName(department.getDepartmentName());
+            depDB.setDepartmentName(department.getDepartmentName());
+        }
+
+        if (Objects.nonNull(department.getDepartmentCode()) &&
+                !"".equalsIgnoreCase(department.getDepartmentCode())) {
+            depDB.setDepartmentCode(department.getDepartmentCode());
         }
 
         if (Objects.nonNull(department.getDepartmentAddress()) &&
                 !"".equalsIgnoreCase(department.getDepartmentAddress())) {
-            prevDepartment.setDepartmentAddress(department.getDepartmentAddress());
+            depDB.setDepartmentAddress(department.getDepartmentAddress());
         }
 
-        if (Objects.nonNull(department.getDepartmentName()) &&
-                !"".equalsIgnoreCase(department.getDepartmentName())) {
-            prevDepartment.setDepartmentName(department.getDepartmentName());
-        }
-
-        return departmentRepository.save(prevDepartment);
+        return departmentRepository.save(depDB);
     }
 
     @Override
-    public List<Department> fetchDepartmentByName(String departmentName) {
+    public Department fetchDepartmentByName(String departmentName) {
         return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
     }
 }
