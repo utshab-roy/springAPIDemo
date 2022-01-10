@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/springBootDemo
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: 'true'
+welcome:
+  message: '"Hello world !!!"'
+server:
+  port: '8080'
+  error:
+    include-message: always
