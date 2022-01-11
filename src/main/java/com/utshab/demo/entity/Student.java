@@ -13,12 +13,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Table(
-        name = "tbl_student",
+        name = "tbl_student", // this will be the name of the table in database
         uniqueConstraints = @UniqueConstraint( // making the email_address column unique
                 name = "emailId_unique",
                 columnNames = "email_address"
         )
-) // this will be the name of the table in database
+//        uniqueConstraints = { // this is an example of multiple unique constraints
+//                @UniqueConstraint(name = "UniqueNumberAndStatus", columnNames = {"personNumber", "isActive"}),
+//                @UniqueConstraint(name = "UniqueSecurityAndDepartment", columnNames = {"securityNumber", "departmentCode"})
+//        }
+)
 public class Student {
     @Id
     @SequenceGenerator(
