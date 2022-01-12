@@ -33,15 +33,15 @@ class StudentRepositoryTest {
     public void saveStudentWithGuardian(){
 
         Guardian guardian = Guardian.builder()
-                .email("atik@gmail.com")
-                .name("Atiquer")
+                .email("roy@gmail.com")
+                .name("roy")
                 .mobile("1234111")
                 .build();
 
         Student student = Student.builder()
-                .firstName("Ashik")
-                .lastName("Jholok")
-                .emailId("ashik@gmail.com")
+                .firstName("utshab")
+                .lastName("roy")
+                .emailId("utshab@gmail.com")
                 .guardian(guardian)
                 .build();
 
@@ -53,5 +53,25 @@ class StudentRepositoryTest {
         List<Student> studentList = studentRepository.findAll();
 
         System.out.println(studentList);
+    }
+
+    @Test
+    public void findStudentByFirstName(){
+        List<Student> students = studentRepository.findByFirstName("Ashik");
+        System.out.println(students);
+    }
+
+    @Test
+    public void findByLastNameNotNull(){
+        Object students =
+                studentRepository.findByLastNameNotNull();
+        System.out.println(students);
+    }
+
+    @Test
+    public void asFindStudentByGuardianName(){
+        Object students =
+                studentRepository.findByGuardianName("Atiquer");
+        System.out.println(students);
     }
 }
