@@ -1,8 +1,6 @@
 package com.utshab.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,6 +8,8 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+//@ToString(exclude = "course") // for fetch type LAZY need to exclude the course from the to string
 public class CourseMaterial {
     @Id
     @SequenceGenerator(name = "course_material_sequence", sequenceName = "course_material_sequence", allocationSize = 1)
@@ -17,7 +17,7 @@ public class CourseMaterial {
     private Long courseMaterialId;
     private String url;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // EAGER fetch type will also load the course data
     @JoinColumn(name = "course_id", // name of the column that will generate in database
             referencedColumnName = "courseId" // referencing courseId as foreign key from Course class
     )
