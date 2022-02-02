@@ -19,4 +19,13 @@ class CourseRepositoryTest {
         List<Course> courses = courseRepository.findAll();
         System.out.println(courses);
     }
+
+    @Test
+    public void createSimpleCourse(){
+        Course course = Course.builder()
+                .title("English")
+                .credit(4)
+                .build();
+        courseRepository.save(course);
+    }
 }

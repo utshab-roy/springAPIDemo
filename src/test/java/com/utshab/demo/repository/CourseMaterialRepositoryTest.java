@@ -18,11 +18,11 @@ class CourseMaterialRepositoryTest {
     @Test
     public void saveCourseMaterial(){
         Course course = Course.builder()
-                .title("Data structure")
-                .credit(3)
+                .title("Interface")
+                .credit(4)
                 .build();
         CourseMaterial courseMaterial = CourseMaterial.builder()
-                .url("www.course-mat.com")
+                .url("www.interface.com")
                 .course(course)
                 .build();
 
