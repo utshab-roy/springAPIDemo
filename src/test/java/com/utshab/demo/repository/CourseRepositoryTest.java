@@ -1,6 +1,7 @@
 package com.utshab.demo.repository;
 
 import com.utshab.demo.entity.Course;
+import com.utshab.demo.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +27,22 @@ class CourseRepositoryTest {
                 .title("English")
                 .credit(4)
                 .build();
+        courseRepository.save(course);
+    }
+
+    @Test
+    public void saveCourseWithTeacher(){
+        Teacher teacher = Teacher.builder()
+                .firstName("Katrina")
+                .lastName("Kaif")
+                .build();
+
+        Course course = Course.builder()
+                .title("python")
+                .credit(6)
+                .teacher(teacher)
+                .build();
+
         courseRepository.save(course);
     }
 }

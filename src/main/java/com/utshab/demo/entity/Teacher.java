@@ -25,11 +25,11 @@ public class Teacher {
     private String firstName;
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    // this will create a teacher_id foreign key in the course table
-    @JoinColumn(
-            name = "teacher_id",
-            referencedColumnName = "teacherId"
-    )
-    private List<Course> courses;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    // this will create a teacher_id foreign key in the course table
+//    @JoinColumn(
+//            name = "teacher_id",
+//            referencedColumnName = "teacherId"
+//    )
+//    private List<Course> courses;
 }
