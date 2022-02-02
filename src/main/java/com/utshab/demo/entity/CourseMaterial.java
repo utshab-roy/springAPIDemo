@@ -17,7 +17,11 @@ public class CourseMaterial {
     private Long courseMaterialId;
     private String url;
     // LAZY fetch type only fetch this class data
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // EAGER fetch type will also load the course data
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, // EAGER fetch type will also load the course data
+            optional = false // this will ensure that course cannot be created without course material (why not working ?)
+    )
     @JoinColumn(name = "course_id", // name of the column that will generate in database
             referencedColumnName = "courseId" // referencing courseId as foreign key from Course class
     )
