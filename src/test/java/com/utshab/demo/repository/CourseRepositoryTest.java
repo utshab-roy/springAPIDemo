@@ -1,6 +1,7 @@
 package com.utshab.demo.repository;
 
 import com.utshab.demo.entity.Course;
+import com.utshab.demo.entity.Student;
 import com.utshab.demo.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -93,5 +95,30 @@ class CourseRepositoryTest {
 
         List<Course> courses = courseRepository.findByTitleContainingIgnoreCase("C", firstPageTenRecords);
         System.out.println("Sorted courses: " + courses);
+    }
+
+    @Test
+    public void saveCourseWithStudentAndTeacher() {
+        Teacher teacher = Teacher.builder()
+                .firstName("abdul")
+                .lastName("rahim")
+                .build();
+
+        Course course = Course.builder()
+                .title("AI")
+                .credit(2)
+                .teacher(teacher)
+                .build();
+
+        Student student = Student.builder()
+                .firstName("farhan")
+                .lastName("mahtab")
+                .emailId("farhan@gmail.com")
+                .build();
+
+        // how this is working ??
+        course.addStudents(student);
+
+        courseRepository.save(course);
     }
 }
