@@ -121,4 +121,17 @@ class CourseRepositoryTest {
 
         courseRepository.save(course);
     }
+
+    // lazy load exception, cause ??? solution !
+    @Test
+    public void addStudentInCourse() {
+        Student student = Student.builder()
+                .firstName("milon")
+                .lastName("hawladar")
+                .emailId("milon@gmail.com")
+                .build();
+
+        Course course = courseRepository.findById(1L).get();
+        course.addStudents(student);
+    }
 }
